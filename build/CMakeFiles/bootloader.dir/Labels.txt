@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/CMakeFiles/bootloader
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/CMakeFiles/bootloader.rule
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/CMakeFiles/bootloader-complete.rule
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/cicero/projects/tcc/software-esp/hydro-sense/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
