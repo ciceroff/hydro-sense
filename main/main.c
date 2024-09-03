@@ -1,11 +1,3 @@
-/* Simple Read Example
-
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
-
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
 #include "freertos/FreeRTOS.h"
 #include <stdio.h>
 #include <string.h>
@@ -32,6 +24,18 @@ void conectadoWifi(void *params)
     }
 }
 
+void trataComunicacaoComServidor(void * params) {
+    char mensagem[50];
+    if(xSemaphoreTake(conexaoMQTTSemaphore, portMAX_DELAY)){
+        while(true){
+            float temperatura = 20.0 + (float)rand()/(float)(RAND_MAX/10.0);
+            sprintf(mensagem, "{\"temperature\": %f}", temperatura);
+            mqtt_envia_mensagem("v1/devices/me/telemetry", mensagem);
+
+            vTaskDelay(3000/portTICK_PERIOD_MS);
+        }
+    }
+}
 
 void app_main()
 {
@@ -48,5 +52,6 @@ void app_main()
     wifi_start();
 
     xTaskCreate(&conectadoWifi, "Conexão ao MQTT", 4096, NULL, 1, NULL);
+    xTaskCreate(&trataComunicacaoComServidor, "Envio de telemetria", 4096, NULL, 1, NULL);
 
 }
