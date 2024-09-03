@@ -1,3 +1,0 @@
-/home/cicero/projects/tcc/software-esp/hydro-sense/main/Kconfig.projbuild:16: warning: style: quotes recommended around '7' in 'int 7'
-Compiler supported targets: xtensa-esp32-elf
-
