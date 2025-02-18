@@ -14,14 +14,13 @@
 #define LORA_IQ_INVERSION_ON false
 #define AOUT_PIN 36
 #define AOUT_PIN_2 38
-#define dry 3400
-#define wet 1800
 #define RX_TIMEOUT_VALUE 1000
 #define BUFFER_SIZE 30
 
 char txpacket[BUFFER_SIZE];
 bool lora_idle = true;
-
+int dry = 3100;
+int wet = 1400;
 static SSD1306Wire display(0x3c, 500000, SDA_OLED, SCL_OLED, GEOMETRY_128_64, RST_OLED);
 static RadioEvents_t RadioEvents;
 
@@ -109,6 +108,15 @@ void loop() {
       showMessage(sensor2char);
 
       int media = (sensor1 + sensor2) / 2;
+      if(media > dry){
+        wet = wet + (media - dry);
+        dry = media;
+      }
+      else if(media < wet){
+        dry = dry - (wet - media);
+        wet = media;
+      }
+
       sprintf(mediaChar, "%d", media);
       showMessage("Media");
 
@@ -137,12 +145,12 @@ void loop() {
 
     Radio.IrqProcess();
     showMessage("delay...");
-    // delay(60000); Para testes apenas, 1min de timing
+    // delay(60000); // Para testes apenas, 1min de timing
     delay(3600000);
-    showMessage("Reiniciando ESP...");
-    delay(5000);  
+    // showMessage("Reiniciando ESP...");
+    // delay(5000);  
 
-    esp_restart();  
+    // esp_restart();  
 
 }
 
