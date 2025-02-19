@@ -13,7 +13,7 @@
 #define LORA_FIX_LENGTH_PAYLOAD_ON false
 #define LORA_IQ_INVERSION_ON false
 #define AOUT_PIN 36
-#define AOUT_PIN_2 38
+#define AOUT_PIN_2 37
 #define RX_TIMEOUT_VALUE 1000
 #define BUFFER_SIZE 30
 
